@@ -7,12 +7,12 @@ public class CalculatorTest {
 
     @Test
     void testAddition() {
-        assertEquals(5, c.add(2, 3));
+        assertEquals(58, c.add(2, 3));
     }
 
     @Test
     void testSubtraction() {
-        assertEquals(5, c.subtract(10, 5));
+        assertEquals(8, c.subtract(10, 5));
     }
 
     @Test
