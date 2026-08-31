@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Management System - Agile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Student Management System</h1>
+<p>Scrum • Kanban • XP Implementation</p>
+</header>
+
+<nav>
+<button onclick="show('system')">Student System</button>
+<button onclick="show('scrum')">Scrum</button>
+<button onclick="show('kanban')">Kanban</button>
+<button onclick="show('xp')">XP</button>
+<button onclick="show('compare')">Comparison</button>
+</nav>
+
+<main>
+<section id="system" class="page">
+<div id="auth" class="card">
+<h2>Student Registration / Login</h2>
+<div class="tabs"><button onclick="authMode('register')">Register</button><button onclick="authMode('login')">Login</button></div>
+<form id="regForm">
+<input id="rname" placeholder="Full name" required>
+<input id="remail" type="email" placeholder="Email" required>
+<input id="rpass" type="password" placeholder="Password" required>
+<button>Register</button><p id="rmsg"></p>
+</form>
+<form id="loginForm" class="hide">
+<input id="lemail" type="email" placeholder="Email" required>
+<input id="lpass" type="password" placeholder="Password" required>
+<button>Login</button><p id="lmsg"></p>
+</form>
+</div>
+
+<div id="dashboard" class="hide">
+<div class="top card"><div><h2>Student Dashboard</h2><span id="welcome"></span></div><button class="red" onclick="logout()">Logout</button></div>
+<div class="stats"><div><b id="total">0</b>Total Students</div><div><b id="active">0</b>Active Students</div></div>
+
+<div class="card">
+<h2 id="ftitle">Add Student</h2>
+<form id="studentForm" class="grid">
+<input type="hidden" id="sid">
+<input id="sname" placeholder="Student name" required>
+<input id="roll" placeholder="Roll number" required>
+<input id="semail" type="email" placeholder="Email" required>
+<input id="course" placeholder="Course (e.g. B.Tech CSE)" required>
+<select id="year" required><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select>
+<select id="status"><option>Active</option><option>Inactive</option></select>
+<button>Save Student</button><button type="button" class="gray" onclick="resetForm()">Clear</button>
+</form>
+</div>
+
+<div class="card">
+<div class="search"><h2>Students</h2><input id="search" placeholder="Search student..." oninput="render()"></div>
+<table><thead><tr><th>Name</th><th>Roll</th><th>Email</th><th>Course</th><th>Year</th><th>Status</th><th>Action</th></tr></thead><tbody id="tbody"></tbody></table>
+</div>
+<div class="card"><h2>Report</h2><button onclick="report()">Generate Report</button><pre id="reportBox"></pre></div>
+</div>
+</section>
+
+<section id="scrum" class="page hide">
+<div class="card"><h2>Part A: Scrum Implementation</h2>
+<h3>Product Backlog</h3>
+<table><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr>
+<tr><td>PB1</td><td>Login Module</td><td>High</td></tr><tr><td>PB2</td><td>Registration</td><td>High</td></tr>
+<tr><td>PB3</td><td>Add Student</td><td>High</td></tr><tr><td>PB4</td><td>Delete Student</td><td>Medium</td></tr>
+<tr><td>PB5</td><td>Search Student</td><td>Medium</td></tr><tr><td>PB6</td><td>Report</td><td>Low</td></tr><tr><td>PB7</td><td>Update Student</td><td>High</td></tr></table>
+<h3>Sprint Duration: 2 Weeks</h3>
+<div class="columns"><div><h3>Sprint 1</h3><p>✓ Registration</p><p>✓ Login</p><p>✓ Add Student</p></div><div><h3>Sprint 2</h3><p>Search</p><p>Delete</p><p>Update</p><p>Report</p></div></div>
+<h3>Daily Scrum</h3><p><b>Yesterday:</b> Completed Login Module</p><p><b>Today:</b> Develop Registration Module</p><p><b>Issue:</b> Testing/database connection</p>
+<h3>Sprint Review</h3><p>✓ Login &nbsp; ✓ Registration &nbsp; ✓ Add Student</p>
+<h3>Sprint Retrospective</h3><p>• What went well? • What should improve? • Action items</p>
+</div></section>
+
+<section id="kanban" class="page hide">
+<div class="card"><h2>Part B: Kanban Implementation</h2><p>Move each task through <b>To Do → In Progress → Done</b>.</p></div>
+<div class="kanban"><div class="col"><h2>To Do</h2><div id="todo"></div></div><div class="col"><h2>In Progress</h2><div id="prog"></div></div><div class="col"><h2>Done</h2><div id="done"></div></div></div>
+</section>
+
+<section id="xp" class="page hide">
+<div class="card"><h2>Part C: Extreme Programming (XP)</h2>
+<p>XP focuses on frequent delivery, customer feedback, testing and clean code.</p>
+<div class="xpgrid">
+<div><h3>Planning Game</h3><p>Customer selects high-priority stories.</p></div>
+<div><h3>Small Releases</h3><p>Deliver small working features frequently.</p></div>
+<div><h3>Pair Programming</h3><p>Two developers work together on code.</p></div>
+<div><h3>Test-Driven Development</h3><p>Write tests before or along with implementation.</p></div>
+<div><h3>Continuous Integration</h3><p>Integrate and test code frequently.</p></div>
+<div><h3>Refactoring</h3><p>Improve code structure without changing behavior.</p></div>
+</div>
+<h3>XP Iterations for this project</h3>
+<ol><li>Registration + Login</li><li>Add + Update Student</li><li>Search + Delete Student</li><li>Report + testing + refactoring</li></ol>
+</div></section>
+
+<section id="compare" class="page hide">
+<div class="card"><h2>Comparison of Agile Methodologies</h2>
+<table><tr><th>Feature</th><th>Scrum</th><th>Kanban</th><th>XP</th></tr>
+<tr><td>Work style</td><td>Fixed sprints</td><td>Continuous flow</td><td>Short iterations</td></tr>
+<tr><td>Main focus</td><td>Sprint delivery</td><td>Workflow</td><td>Software quality</td></tr>
+<tr><td>Planning</td><td>Sprint planning</td><td>Continuous prioritization</td><td>Planning game</td></tr>
+<tr><td>Board</td><td>Backlog/Sprint backlog</td><td>To Do/In Progress/Done</td><td>Stories/tasks</td></tr>
+<tr><td>Testing</td><td>During sprint</td><td>Continuous</td><td>TDD strongly emphasized</td></tr>
+<tr><td>Best feature</td><td>Clear sprint goals</td><td>Visual flow</td><td>High code quality</td></tr>
+</table>
+</div></section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

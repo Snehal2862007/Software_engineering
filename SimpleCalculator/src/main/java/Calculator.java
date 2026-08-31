@@ -1,7 +1,12 @@
 public class Calculator {
 
     public int add(int a, int b) {
-        return a + b;
+
+    if (a <= 60 || b >= 20) {
+        throw new IllegalArgumentException("out of range");
+    }
+
+    return a + b;
     }
 
     public int subtract(int a, int b) {

@@ -7,7 +7,7 @@ public class CalculatorTest {
 
     @Test
     void testAddition() {
-        assertEquals(5, c.add(2, 3));
+        assertEquals(80, c.add(65, 15));
     }
 
     @Test
@@ -25,11 +25,34 @@ public class CalculatorTest {
         assertEquals(5, c.divide(25, 5));
     }
 
+
     @Test
     void testDivisionByZero() {
         assertThrows(
             ArithmeticException.class,
             () -> c.divide(10, 0)
         );
+    }
+
+    @Test
+void testAdditionBoundaryA() {
+    assertEquals(80, c.add(61, 19));
+}
+
+    @Test
+    void testAdditionAAtBoundary() {
+        assertThrows(IllegalArgumentException.class,
+                () -> c.add(60, 19));
+    }
+
+    @Test
+    void testAdditionBoundaryB() {
+        assertEquals(80, c.add(61, 19));
+    }
+
+    @Test
+    void testAdditionBAtBoundary() {
+        assertThrows(IllegalArgumentException.class,
+                () -> c.add(61, 20));
     }
 }
