@@ -5,9 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>calculator</groupId>
-    <artifactId>simple-calculator</artifactId>
-    <version>1.0</version>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.9.16</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
